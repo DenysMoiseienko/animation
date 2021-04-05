@@ -10,7 +10,7 @@
 
     let numberofRings = 3;
     let ringRadiusOffset = 7;
-    let colors = ['#771122', '#bb1122', '#ff1122'];
+    let colors = ['#E5E5E5', '#B3B3B3', '#999999'];
     let waveOffset = 15;
     let ringRadius = 200;
     let startAngle = 0;
@@ -31,7 +31,7 @@
 
     function drawRing(radius, color, offsetAngle) {
         context.strokeStyle = color;
-        context.lineWidth = 10;
+        context.lineWidth = 1;
 
         context.beginPath();
 

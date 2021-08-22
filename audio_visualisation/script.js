@@ -1,20 +1,20 @@
-var body, num, array, width, context, logo, elements, analyser, src, height;
+let body, num, array, context, item, elements, analyser, src, height;
+let AudioContext = window.AudioContext || window.webkitAudioContext;
 
-var AudioContext = window.AudioContext || window.webkitAudioContext;
-
-body = document.querySelector('body');
+body = document.getElementById('scene');
 num = 32;
 array = new Uint8Array(num * 2);
-width = 30;
 
-window.onclick = function() {
+function start() {
     if(context) return;
-    
+    removeContainer('toolbar');
     createElements();
+    getAudio();
+}
 
+function getAudio() {
     context = new AudioContext;
     analyser = context.createAnalyser();
-    
     navigator.mediaDevices.getUserMedia({
         audio: true
     }).then(stream => {
@@ -30,26 +30,26 @@ window.onclick = function() {
 function loop() {
     window.requestAnimationFrame(loop);
     analyser.getByteFrequencyData(array);
-    
     setElements();
 }
 
 function createElements() {
-    body.querySelector('h1').remove();
-    for(var i = 0; i < num; i++) {
-        logo = document.createElement('div');
-        logo.className = 'logo';
-        logo.style.background = "red";
-        logo.style.minWidth = width + 'px';
-        body.appendChild(logo);
+    for(let i = 0; i < num; i++) {
+        item = document.createElement('div');
+        item.className = 'item';
+        body.appendChild(item);
     }
-    elements = document.getElementsByClassName('logo');
+    elements = document.getElementsByClassName('item');
 }
 
 function setElements(){
-    for(var i = 0; i < num; i++) {
+    for(let i = 0; i < num; i++) {
         height = array[i + num];
         elements[i].style.minHeight = height + 'px';
         elements[i].style.opacity = 0.008 * height;
     }
+}
+
+function removeContainer(id) {
+    document.getElementById(id).remove();
 }

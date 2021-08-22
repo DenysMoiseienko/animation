@@ -1,18 +1,38 @@
 body{
+    background: black;
+    position: relative;
+}
+
+#toolbar{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    background: transparent;
+    border-radius: 0;
+    border: 1px solid white;
+    padding: 10px 25px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+#scene{
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0%;
     min-height: 100vh;
-    background: black;
+    width: 100%;
 }
 
-.logo{
+.item{
     margin: 2px;
-    /* border-radius: 30px;*/
+    background: red;
+    width: 30px;
 } 
-
-h1{
-    color: whitesmoke;
-    cursor: pointer;
-}
